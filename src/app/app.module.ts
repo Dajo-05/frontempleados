@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 
 @NgModule({
@@ -20,7 +21,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
     FormsModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    MatExpansionModule
+    MatExpansionModule, MatPaginatorModule
     
   ],
   providers: [],
