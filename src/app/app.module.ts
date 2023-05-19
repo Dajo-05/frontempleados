@@ -3,9 +3,11 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms'
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-import { HttpClientModule } from '@angular/common/http'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
+import {MatExpansionModule} from '@angular/material/expansion';
+
 
 @NgModule({
   declarations: [
@@ -17,8 +19,9 @@ import { HttpClientModule } from '@angular/common/http'
     ReactiveFormsModule, 
     FormsModule,
     BrowserAnimationsModule,
-    HttpClientModule
-
+    HttpClientModule,
+    MatExpansionModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

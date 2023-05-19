@@ -14,8 +14,11 @@ import { ListaPaises } from './modelo/listadoPaises.interface';
 export class AppComponent implements OnInit {
   title = 'frontempleados';
   listaPaises: ListaPaises[] = [];
+  listaEmpleados: EmpladosInterface[] =[];
   pais: any;
   email1:any;
+  page: number = 1;
+  visible = false;
 
   empleadoForm = new FormGroup({
     primerNombre: new FormControl('', Validators.required),
@@ -37,7 +40,7 @@ export class AppComponent implements OnInit {
       console.log(data);
     },  error => console.error(error)
     )
-
+        this.cargarEmpleados();
   }
 
   guardar(): void {
@@ -65,8 +68,10 @@ export class AppComponent implements OnInit {
       apellido = '';
       onombre = '';
       window.alert("Se Creo tarjeta con Exito!");
+      this.cargarEmpleados();
       this.empleadoForm.reset();
     }, error => console.error(error))
+
 
   }
 
@@ -98,6 +103,26 @@ export class AppComponent implements OnInit {
     this.pais = this.listaPaises.find(x => x.id == id )
     console.log(this.pais);
 
+  }
+
+  cargarEmpleados():void{
+    this.empleadoService.getAllEmpleados().subscribe( data =>{
+      this.listaEmpleados = data;
+      console.log(data);
+    },  error => console.error(error)
+    )
+  }
+
+  eliminar(empleado: EmpladosInterface){
+    let mensaje = confirm("Esta Seguro de eliminar este empleado");
+    if (mensaje) {
+      console.log('Accion eliminar empleado', empleado);
+    }
+  }
+
+  editar(empleado: EmpladosInterface){
+   this.visible = true;
+    console.log('Accion editar empleado', empleado);
   }
 
 }
