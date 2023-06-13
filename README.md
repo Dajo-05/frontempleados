@@ -1,30 +1,16 @@
-<<<<<<< README.md
+
 # Frontempleados
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.2.
+Este proyecto fue generado con [Angular CLI](https://github.com/angular/angular-cli) versión 16.0.2.
+por lo cual debe tener instalado la version mas recinete de node.js  https://nodejs.org/es/download
+y ejecutar el comado de  angular CLi para poder ejecurta el proyecto. `npm install -g @angular/cli`
 
-## Development server
+## ejecucion del proyecto
+abrir el proyecto en visual estudi code
+ejecutar en linea de comando el comadno `npm i` 
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## ejecutar el proyecto:
+ejecutar en linea de comanado el comando `ng serve --open`
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
-
-
+## Nota:
+el archivo de la base de datos se encuntra en este proyecto, las intrucciones de como cargar la informacion se encunetra en el archivo README del proyecto backend https://github.com/Dajo-05/apirest.git 
