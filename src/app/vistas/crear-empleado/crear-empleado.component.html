@@ -1,0 +1,58 @@
+<div class="container">
+  <h2>Crear Empleado</h2>
+  <form [formGroup]="empleadoForm" (ngSubmit)="guardar()">
+    <div class="form-group" style="margin: 2%">
+      <label> Primer Nombre </label>
+      <input type="text" formControlName="primerNombre" class="form-control" />
+    </div>
+
+    <div class="form-group" style="margin: 2%">
+      <label> Segundo Nombre</label>
+      <input type="text" formControlName="otroNombre" class="form-control" />
+    </div>
+
+    <div class="form-group" style="margin: 2%">
+      <label> Primer Apellido </label>
+      <input
+        type="text"
+        formControlName="primerApellido"
+        class="form-control"
+      />
+    </div>
+
+    <div class="form-group" style="margin: 2%">
+      <label for="inputState" class="form-label">Seleccione un Pais</label>
+      <select
+        id="inputState"
+        class="form-select"
+        formControlName="pais"
+        (change)="seleccionarPais($event)"
+      >
+        <option selected>Seleccione una...</option>
+        <option [value]="item.id" *ngFor="let item of listaPaises">
+          {{ item.nombrePais }}
+        </option>
+      </select>
+    </div>
+    <div class="form-group" style="margin: 2%">
+      <label> Correo Electronico</label>
+      <input
+        type="text"
+        formControlName="email"
+        class="form-control"
+        [placeholder]="emailForm"
+        [disabled]="true"
+      />
+    </div>
+
+    <br />
+
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="empleadoForm.invalid"
+    >
+      Guardar Empleado
+    </button>
+  </form>
+</div>

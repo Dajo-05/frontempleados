@@ -1,97 +1,22 @@
-<br><br><br><br>
-<div class="container" tyle="padding: 10%">
-  <h2>Gestion de Empleados</h2>
-  <mat-accordion>
-    <mat-expansion-panel [(expanded)]="visible" (closed)="limpiarForm()">
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          {{cambiarNombre ? 'Editar' : 'Crear' }} Empleado
-        </mat-panel-title>
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" routerLink="/inicio">
+        <img src="../assets/lima-creativa.svg" alt="Bootstrap" width="90" height="70">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" routerLink="/crearempleado">Crear empleado</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/editarempleado">Editar empleado</a>
+          </li>
         
-      </mat-expansion-panel-header>
-      <div class="container" style="padding: 10%" id="formulario">
-        
-          <h2>Crear Empleado</h2>
-
-          <form [formGroup]="empleadoForm" (ngSubmit)="guardar()">
-            <div class="form-group" style="margin: 2%">
-              <label> Primer Nombre </label>
-              <input type="text" formControlName="primerNombre" class="form-control">
-            </div>
-
-            <div class="form-group" style="margin: 2%">
-              <label> Primer Apellido </label>
-              <input type="text" formControlName="primerApellido" class="form-control">
-            </div>
-
-            <div class="form-group" style="margin: 2%">
-              <label> Otro nombre</label>
-              <input type="text" formControlName="otroNombre" class="form-control">
-            </div>
-
-            <div class="form-group" style="margin: 2%">
-              <label for="inputState" class="form-label">Seleciones un Titular</label>
-              <select id="inputState" class="form-select" formControlName="pais" (change)="cambiarTitular($event)">
-                <option selected>Selecione una...</option>
-                <option [value]="item.id" *ngFor="let item of listaPaises">
-                  {{item.nombrePais}}
-                </option>
-              </select>
-            </div>
-            <div class="form-group" style="margin: 2%">
-              <label> Correo Electronico</label>
-              <input type="text" formControlName="email"  class="form-control" [placeholder]="emailForm" [disabled]="true">
-            </div>
-
-            <br>
-          
-              <button type="submit" class="btn btn-primary" [disabled]="empleadoForm.invalid">Guardar Empleado </button>
-           
-            
-          </form>
-        
+        </ul>
       </div>
-    </mat-expansion-panel>
-  </mat-accordion>
-
-
-<br><br><br>
-
-  <div class="container" tyle="padding: 10%">
-
-    <table class="table table-hover" tyle="padding: 10%">
-      <thead>
-        <tr>
-          <th scope="col">Nombre</th>
-          <th scope="col">Segundo nombre</th>
-          <th scope="col">Apellidos</th>
-          <th scope="col">Pais de Empleo</th>
-          <th scope="col">E-Mail</th>
-          <th scope="col">acciones</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let empleado of listaEmpleados | slice: desde:hasta" >
-          <td>{{empleado.primerNombre}} </td>
-          <td>{{empleado.otroNombre}}</td>
-          <td>{{empleado.primerApellido}}</td>
-          <td>{{empleado.paisEmpleo}}</td>
-          <td>{{empleado.correo}}</td>
-          <td>
-            <button type="button" class="btn btn-danger" (click)="eliminar(empleado)">Eliminar</button>
-            <button type="button" class="btn btn-warning" (click)="editar(empleado)"
-              style="margin-left: 2%">Editar</button>
-
-          </td>
-        </tr>
-    </table>
-    <mat-paginator [length]=" listaEmpleados.length"
-              [pageSize]="10"
-              (page)="cambiarPagina($event)"
-              aria-label="Select page">
-</mat-paginator>
-  </div>
-</div>
-
-
+    </div>
+  </nav>
 <router-outlet></router-outlet>

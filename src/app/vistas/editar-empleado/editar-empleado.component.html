@@ -1,0 +1,97 @@
+<br><br><br><br>
+<div class="container" tyle="padding: 10%">
+  <h2>Gestion de Empleados</h2>
+  <mat-accordion>
+    <mat-expansion-panel [(expanded)]="visible" (closed)="limpiarForm()">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Editar Informacion del  Empleado
+        </mat-panel-title>
+
+      </mat-expansion-panel-header>
+      <div class="container" style="padding: 10%" id="formulario">
+
+        <h2>Editar Informacion del  Empleado</h2>
+
+        <form [formGroup]="empleadoForm" (ngSubmit)="guardar()">
+          <div class="form-group" style="margin: 2%">
+            <label> Primer Nombre </label>
+            <input type="text" formControlName="primerNombre" class="form-control">
+          </div>
+
+          <div class="form-group" style="margin: 2%">
+            <label> Segundo Nombre</label>
+            <input type="text" formControlName="otroNombre" class="form-control">
+          </div>
+
+          <div class="form-group" style="margin: 2%">
+            <label> Primer Apellido </label>
+            <input type="text" formControlName="primerApellido" class="form-control">
+          </div>
+
+          <div class="form-group" style="margin: 2%">
+            <label for="inputState" class="form-label">Seleccione un Pais</label>
+            <select id="inputState" class="form-select" formControlName="pais" (change)="cambiarTitular($event)">
+              <option selected>Selecione una...</option>
+              <option [value]="item.id" *ngFor="let item of listaPaises">
+                {{item.nombrePais}}
+              </option>
+            </select>
+          </div>
+          <div class="form-group" style="margin: 2%">
+            <label> Correo Electronico</label>
+            <input type="text" formControlName="email" class="form-control" [placeholder]="emailForm" [disabled]="true">
+          </div>
+
+          <br>
+
+          <button type="submit" class="btn btn-primary" [disabled]="empleadoForm.invalid">Guardar Empleado </button>
+
+
+        </form>
+
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+
+  <br><br><br>
+
+  <div class="container" tyle="padding: 10%">
+
+    <div class="table-responsive">
+      <table class="table table-hover" tyle="padding: 10%">
+        <thead>
+          <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Segundo nombre</th>
+            <th scope="col">Apellidos</th>
+            <th scope="col">Pais de Empleo</th>
+            <th scope="col">E-Mail</th>
+            <th scope="col">acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let empleado of listaEmpleados | slice: desde:hasta">
+            <td>{{empleado.primerNombre}} </td>
+            <td>{{empleado.otroNombre}}</td>
+            <td>{{empleado.primerApellido}}</td>
+            <td>{{empleado.paisEmpleo}}</td>
+            <td>{{empleado.correo}}</td>
+            <td>
+              <button mat-icon-button color="warn" (click)="eliminar(empleado)">
+                <mat-icon>delete</mat-icon> </button>
+              <button mat-icon-button color="yellow" (click)="editar(empleado)"
+                style="margin-left: 2%"><mat-icon>edit</mat-icon> </button>
+  
+            </td>
+          </tr>
+      </table>
+
+    </div>
+   
+    <mat-paginator [length]=" listaEmpleados.length" [pageSize]="10" (page)="cambiarPagina($event)"
+      aria-label="Select page">
+    </mat-paginator>
+  </div>
+</div>
